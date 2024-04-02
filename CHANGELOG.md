@@ -11,11 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ### Added | Changed | Deprecated | Removed | Fixed | Security -->
 
+<!--------------------- Don't add new entries after this line --------------------->
+
+## [2.6.0] - 2024-04-02
+
 ### Added
 
 - Many `K8s.Conn.Auth` providers now cache values, and periodically refresh their values. [#302](https://github.com/coryodaniel/k8s/pull/302). because of this clusters using Exec commands to generate auth tokens will see greatly improved performance.
 
-<!--------------------- Don't add new entries after this line --------------------->
 ## [2.5.0] - 2023-11-12
 
 ### Added

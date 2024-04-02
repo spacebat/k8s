@@ -1,12 +1,13 @@
 defmodule K8s.MixProject do
   use Mix.Project
 
-  @source_url "https://github.com/coryodaniel/k8s"
-  @version "2.5.0"
+  @app :k8s
+  @source_url "https://github.com/coryodaniel/#{@app}"
+  @version "2.6.0"
 
   def project do
     [
-      app: :k8s,
+      app: @app,
       description: "Kubernetes API Client for Elixir",
       version: @version,
       elixir: "~> 1.14",
@@ -56,12 +57,12 @@ defmodule K8s.MixProject do
 
   defp package do
     [
-      name: :k8s,
+      name: @app,
       maintainers: ["Cory O'Daniel", "Michael Ruoss"],
       licenses: ["MIT"],
       links: %{
         "GitHub" => @source_url,
-        "Changelog" => "https://hexdocs.pm/k8s/changelog.html"
+        "Changelog" => "https://hexdocs.pm/#{@app}/changelog.html"
       },
       files: ["lib", "mix.exs", "README*", "LICENSE*", "CHANGELOG.md"]
     ]
@@ -108,7 +109,7 @@ defmodule K8s.MixProject do
       ignore_warnings: ".dialyzer_ignore.exs",
       plt_add_apps: [:mix, :eex],
       plt_core_path: "priv/plts",
-      plt_file: {:no_warn, "priv/plts/k8s.plt"}
+      plt_file: {:no_warn, "priv/plts/#{@app}.plt"}
     ]
   end
 end
