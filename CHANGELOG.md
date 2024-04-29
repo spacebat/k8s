@@ -13,6 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!--------------------- Don't add new entries after this line --------------------->
 
+### Fixed
+
+- With the upgrade to `mint` 1.6.0, there's no need for setting
+  `insecure_skip_tls_verify: true` anymore in most cases.
+  (https://github.com/elixir-mint/mint/pull/418). Documentation and examples
+  were adapted.
+
 ## [2.6.0] - 2024-04-02
 
 ### Added

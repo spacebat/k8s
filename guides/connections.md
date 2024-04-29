@@ -19,7 +19,7 @@ The options passed as second argument are the same as for `K8s.Conn.from_file/2`
 To pass the env variable explicitely and specify options:
 
 ```elixir
-{:ok, conn} = K8s.Conn.from_env("K8S_CONFIG_FILE", insecure_skip_tls_verify: true)
+{:ok, conn} = K8s.Conn.from_env("K8S_CONFIG_FILE")
 ```
 
 **Using `K8s.Conn.from_file/2`:**
