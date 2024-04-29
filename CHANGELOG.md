@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!--------------------- Don't add new entries after this line --------------------->
 
+## [2.6.1] - 2024-04-29
+
 ### Fixed
 
 - With the upgrade to `mint` 1.6.0, there's no need for setting
