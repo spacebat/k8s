@@ -102,14 +102,11 @@ defmodule K8s.Conn do
   {:ok, conn} = K8s.Conn.from_file("~/.kube/config")
   ```
 
-  Pass the context and allow insecure TLS verification :
+  Pass the context:
 
   ```
   {:ok, conn} =
-    K8s.Conn.from_file("~/.kube/config",
-      context: "my-kind-cluster",
-      insecure_skip_tls_verify: true
-    )
+    K8s.Conn.from_file("~/.kube/config", context: "my-kind-cluster")
   ```
 
   ### Options
@@ -178,26 +175,7 @@ defmodule K8s.Conn do
 
   ```
   {:ok, conn} =
-    K8s.Conn.from_service_account("/path/to/token",
-      insecure_skip_tls_verify: true
-    )
-  ```
-
-  Allow insecure TLS verification:
-
-  ```
-  {:ok, conn} =
-    K8s.Conn.from_service_account(
-      insecure_skip_tls_verify: true
-    )
-  ```
-
-  ```
-  {:ok, conn} =
-    K8s.Conn.from_service_account(
-      "/path/to/token",
-      insecure_skip_tls_verify: true
-    )
+    K8s.Conn.from_service_account("/path/to/token")
   ```
   """
   @spec from_service_account(service_account_path :: String.t(), opts :: Keyword.t()) ::
