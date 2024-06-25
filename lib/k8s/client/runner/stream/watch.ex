@@ -27,7 +27,7 @@ defmodule K8s.Client.Runner.Stream.Watch do
 
       iex> {:ok,conn} = K8s.Conn.from_file("~/.kube/config", [context: "docker-desktop"])
       ...> op = K8s.Client.list("v1", "Namespace")
-      ...> K8s.Client.Runner.Watch.Stream.stream(conn, op, []) |> Stream.map(&IO.inspect/1) |> Stream.run()
+      ...> K8s.Client.Runner.Stream.Watch.stream(conn, op, []) |> Stream.map(&IO.inspect/1) |> Stream.run()
   """
   @spec stream(K8s.Conn.t(), K8s.Operation.t(), keyword()) ::
           {:ok, Enumerable.t()} | K8s.Client.Provider.error_t()
