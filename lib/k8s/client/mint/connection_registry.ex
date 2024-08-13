@@ -141,13 +141,24 @@ defmodule K8s.Client.Mint.ConnectionRegistry do
     {:noreply, state}
   end
 
+  @type pool_option :: {:worker_module, atom} | {:size, integer} | {:max_overflow, integer} | {:strategy, atom}
+
+  @spec pool_config() :: list(pool_option)
+  def pool_config do
+    Keyword.merge(
+      @poolboy_config,
+      Application.get_env(:k8s, :pool_config, []),
+      fn _k, _v1, v2 -> v2 end
+    )
+  end
+
   @spec get_adapter_spec(Mint.HTTP.t(), HTTPAdapter.connection_args_t()) ::
           {adapter_type_t(), :supervisor.child_spec()}
   defp get_adapter_spec(conn, conn_args) do
     case Mint.HTTP.protocol(conn) do
       :http1 ->
         {:adapter_pool,
-         %{id: conn_args, start: {:poolboy, :start_link, [@poolboy_config, conn_args]}}}
+         %{id: conn_args, start: {:poolboy, :start_link, [pool_config(), conn_args]}}}
 
       :http2 ->
         {:singleton, {HTTPAdapter, conn_args}}
